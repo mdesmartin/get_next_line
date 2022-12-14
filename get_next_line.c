@@ -6,38 +6,30 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:57:26 by mvogel            #+#    #+#             */
-/*   Updated: 2022/12/14 10:54:40 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 13:18:29 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
+
+
 
 char	*get_next_line(int fd)
 {
 	char	*stash;
-	char	buf;
+	static	*buf;
 	int		i;
 	int		r;
 
-	while (count)
+	while (que cest pas la fin)
 	{
-		r = read(fd, buf ,1);
-		if (buf == '\0')
-			return (ajoute \n a la fin puis return);
-		if (r > 0)
-		{
-			i += w;
-			stash[i] = buf;
-		}
-		if (w == 0)
-		{
-			stash[i + 1] = '\0';
-			return (stash);
-		}
-		else
-			return (stash);
+		r = read(fd, buf ,BUFFER_SIZE);
+		strjoin (stash, buf, r)
 	}
-	read()
-
-	return (stash);
+	strjoin (stash, buf avant \n));
+	res = stash; +\n 0 la fin
+	stash = buf apres \n jusauq n
+	return res
 }
 
 int	main()
