@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdidesmartin <mehdidesmartin@student.    +#+  +:+       +#+        */
+/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:57:26 by mvogel            #+#    #+#             */
-/*   Updated: 2022/12/20 16:58:43 by mehdidesmar      ###   ########lyon.fr   */
+/*   Updated: 2023/01/02 17:48:40 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ check
 	{
 		if (buf[a] == '\n';)
 			stash = endline(buf, a); //valeur quon va print
-			new())
+			new()
 		a++;
 	}
 	stash = strjoin(stash, buf);
@@ -75,29 +75,36 @@ void	after_end()
 	buf = ft_strrchr(buf, \n)
 }
 
-void	before_end()
+void	before_end(fd, BUFFER_SIZE)
 {
 	char	*buf;
+	char	**stash; //init?
 	int		readed;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	readed = read(fd, buf, BUFFER_SIZE);
-	if (readed == 0 || ft_strchr(buf, '\n')) // et si il renvoyais la position du /n 
+	if (readed == 0 || ft_strchr(buf, '\n')) // et si il renvoyais la position du /n ?
 	{
 		return (ft_strjoin(stash, strchr(buf, '\n')));
 	}
-	stash = ft_strjoin(stash, buf);
-	free(buf);
+	else
+	{
+		stash = ft_strjoin(stash, buf);
+		free(buf);
+		before_end(fd, BUFFER_SIZE);
+	}
 }
 
 char	*get_next_line(int fd)
 {
-
+	char	**stash;
+	
 	if (fd < 0 || BUFFER_SIZE =< 0 || read(fd, LINE?, 0) < 0)
 		return (NULL)
-	stash = before_end()
+	stash = before_end(fd, BUFFER_SIZE)
 
-	buf = after_end();
+	after_end();
+	return (stash);
 }
 
 int	main()
