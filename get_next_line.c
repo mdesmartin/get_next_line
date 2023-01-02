@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: mehdidesmartin <mehdidesmartin@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:57:26 by mvogel            #+#    #+#             */
-/*   Updated: 2022/12/19 17:00:05 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2022/12/20 16:58:43 by mehdidesmar      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	before_end()
 
 char	*get_next_line(int fd)
 {
-	if (fd < 0 || BUFFER_SIZE == 0)
+
+	if (fd < 0 || BUFFER_SIZE =< 0 || read(fd, LINE?, 0) < 0)
 		return (NULL)
 	stash = before_end()
 
