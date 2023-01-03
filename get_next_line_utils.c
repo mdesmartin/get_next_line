@@ -6,9 +6,11 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:24:19 by mvogel            #+#    #+#             */
-/*   Updated: 2022/12/19 15:37:04 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/03 12:34:14 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 static char	*ft_cp(int l_s, const char *s, char *str)
 {
@@ -43,18 +45,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str - i);
 }
 
-char	*ft_strrchr(const char *s, int c) // bollein valeur return ? 1 si trouv2
+char	*ft_strchr(const char *s, int c)
 {
-	int	a;
+	size_t	a;
 
-	a = ft_strlen(s);
-	while (a >= 0)
+	a = 0;
+	while (a <= ft_strlen(s))
 	{
 		if (s[a] == (char)c)
-			return ((char *)s + a);
-		a--;
+			return (((char *) s) + a);
+		a++;
 	}
-	return (NULL);
+	return (0);
 }
 
 size_t	ft_strlen(const char *s)

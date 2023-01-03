@@ -6,108 +6,63 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:57:26 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/02 17:48:40 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/03 16:01:24 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+// void	after_end()
+// {
+// 	buf = ft_strrchr(buf, \n)
+// }
 
-check
-{
-	a = 0;
-	while (a <= ft_strlen(buf))
-	{
-		if (buf[a] == '\n';)
-			stash = endline(buf, a); //valeur quon va print
-			new()
-		a++;
-	}
-	stash = strjoin(stash, buf);
-	return (stash);
-}
-
-char	*new()
-{
-	char *line;
-
-	line = strchr(buf, '\n');
-	return (line);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*stash;
-	char		*buf;
-	int			p;
-
-	while (rread(fd, buf))
-	{
-		check(buf,)
-	}
-
-	while (pas de /n && p == BUFFER_SIZE)
-	{
-		p = read(fd, buf ,BUFFER_SIZE);
-		if (p == -1)
-			return (NULL);
-		if 
-		strjoin (stash, buf)
-	}
-	strjoin (stash, buf avant \n));
-	res = stash; +\n 0 la fin
-	stash = buf apres \n jusauq n
-
-
-	line = stash
-	stast = new();
-	return (line);
-}
-
-
-{
-	
-}
-// lire et join le buffer a chaque fois, puis ensuite lire et si /n on garde ce auil y a avant puis on met de cot2 de auil reste
-
-void	after_end()
-{
-	buf = ft_strrchr(buf, \n)
-}
-
-void	before_end(fd, BUFFER_SIZE)
+char	*before_end(int fd)
 {
 	char	*buf;
-	char	**stash; //init?
+	char	*stash; //init?
 	int		readed;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
 	readed = read(fd, buf, BUFFER_SIZE);
-	if (readed == 0 || ft_strchr(buf, '\n')) // et si il renvoyais la position du /n ?
+	if (readed == 0 || ft_strchr(buf, '\n'))
 	{
-		return (ft_strjoin(stash, strchr(buf, '\n')));
+		return (ft_strjoin(stash, xxx), free(buf), buf = strchr(buf, '\n'));
 	}
 	else
 	{
 		stash = ft_strjoin(stash, buf);
 		free(buf);
-		before_end(fd, BUFFER_SIZE);
+		before_end(fd);
 	}
 }
 
 char	*get_next_line(int fd)
 {
-	char	**stash;
-	
-	if (fd < 0 || BUFFER_SIZE =< 0 || read(fd, LINE?, 0) < 0)
-		return (NULL)
-	stash = before_end(fd, BUFFER_SIZE)
+	char	*stash;
+	char	*line;
 
-	after_end();
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
+		return (NULL);
+	stash = before_end(fd);
+	line = NULL;
+//	after_end();
 	return (stash);
 }
 
+
+
+
+
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 int	main()
 {
-	open()
+	int fd = open("test.txt", O_RDONLY);
+	get_next_line(fd);
 }
