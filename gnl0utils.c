@@ -5,22 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 15:26:14 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/05 15:30:19 by mvogel           ###   ########lyon.fr   */
+/*   Created: 2022/12/19 15:24:19 by mvogel            #+#    #+#             */
+/*   Updated: 2023/01/03 12:34:14 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 static char	*ft_cp(int l_s, const char *s, char *str)
 {
@@ -41,8 +31,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	char	*str;
 
-	if (!(s1))
-		return (NULL);
+	// if (!(s1))
+	// 	return (NULL); malloc 1 et mettre \0
 	l_s1 = ft_strlen(s1);
 	l_s2 = ft_strlen(s2);
 	i = l_s1 + l_s2;
@@ -67,4 +57,14 @@ char	*ft_strchr(const char *s, int c)
 		a++;
 	}
 	return (0);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

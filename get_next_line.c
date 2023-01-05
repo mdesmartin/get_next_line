@@ -5,64 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 09:57:26 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/03 16:01:24 by mvogel           ###   ########lyon.fr   */
+/*   Created: 2023/01/04 15:17:19 by mvogel            #+#    #+#             */
+/*   Updated: 2023/01/05 17:29:48 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// void	after_end()
-// {
-// 	buf = ft_strrchr(buf, \n)
-// }
-
-char	*before_end(int fd)
+char	*clean(char *stash)
 {
-	char	*buf;
-	char	*stash; //init?
-	int		readed;
+	int		i;
+	int		j;
+	char	*cleaned;
 
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (NULL);
-	readed = read(fd, buf, BUFFER_SIZE);
-	if (readed == 0 || ft_strchr(buf, '\n'))
+	i = 0;
+	j = 0;
+	while (stash[i] != '\n')
+		i++;
+	i++;
+	while (stash[i] != '\0')
 	{
-		return (ft_strjoin(stash, xxx), free(buf), buf = strchr(buf, '\n'));
+		cleaned[j++] = stash[i++];
 	}
-	else
+	cleaned[j] = '\0';
+	return (cleaned);
+}
+
+char	*fill(char *stash, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (stash && stash[i] != '\n')
 	{
-		stash = ft_strjoin(stash, buf);
-		free(buf);
-		before_end(fd);
+		line[i] = stash[i];
+		i++;
 	}
+	return (line);
+}
+
+char	*read_n_join(int fd)
+{
+	int		readed;
+	char	*stash;
+	char	*buf;
+
+	readed = 1;
+	while (readed)
+	{
+		readed = read(fd, buf, BUFFER_SIZE);
+		if (readed < 0)
+			return (NULL);
+		ft_strjoin(stash, buf);
+		if (ft_strchr(stash, '\n'))
+			break ;
+	}
+	return (stash);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*stash;
-	char	*line;
+	char *stash;
+	char *line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
-	stash = before_end(fd);
-	line = NULL;
-//	after_end();
-	return (stash);
+	stash = read_n_join(fd);
+	line = fill(stash, line);
+	stash = clean(stash);
+	return (line);
 }
-
-
-
-
-
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdio.h>
 
 int	main()
 {
-	int fd = open("test.txt", O_RDONLY);
-	get_next_line(fd);
+	int	fd = open("test.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
 }
