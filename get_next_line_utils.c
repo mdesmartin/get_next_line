@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:26:14 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/05 15:30:19 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 14:29:49 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,44 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (i);
 	while (s[i])
 		i++;
 	return (i);
 }
 
-static char	*ft_cp(int l_s, const char *s, char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	while (l_s)
+	size_t	i;
+
+	i = 0;
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (src[i] && i < dstsize - 1)
 	{
-		*str = *s;
-		str++;
-		s++;
-		l_s--;
+			dst[i] = src[i];
+			i++;
 	}
-	return (str);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	int		l_s1;
 	int		l_s2;
-	int		i;
 	char	*str;
 
-	if (!(s1))
-		return (NULL);
 	l_s1 = ft_strlen(s1);
 	l_s2 = ft_strlen(s2);
-	i = l_s1 + l_s2;
-	str = malloc(sizeof(char) * (i + 1));
+	str = malloc(sizeof(char) * (l_s1 + l_s2 + 1));
 	if (!(str))
 		return (NULL);
-	str = ft_cp(l_s1, s1, str);
-	str = ft_cp(l_s2, s2, str);
-	*str = '\0';
-	return (str - i);
+	if (s1)
+		ft_strlcpy(str, s1, l_s1 + 1);
+	ft_strlcpy(str + l_s1, s2, l_s2 + 1);
+	return (str);
 }
 
 char	*ft_strchr(const char *s, int c)
