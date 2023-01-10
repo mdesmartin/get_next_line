@@ -6,34 +6,32 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:17:19 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/09 16:07:47 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 15:20:07 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#include <stdio.h>
+// #include <stdio.h>
 
 char	*clean(char *stash)
 {
 	int		i;
+	int		j;
 	char	*cleaned;
 
 	i = 0;
-	if (!stash)
-		return (NULL);
-	if (stash[i] == '\0')
-		return (NULL);
+	j = 0;
 	while (stash[i] && stash[i] != '\n')
-	{
 		i++;
-	}
-	i++;
+	if (!stash[i])
+		return (free(stash), stash = NULL, NULL);
 	cleaned = malloc(sizeof(char) * ft_strlen(stash) - i + 1);
 	if (!(cleaned))
 		return (free(stash), stash = NULL, NULL);
+	i++;
 	ft_strlcpy(cleaned, &stash[i], ft_strlen(stash) - i + 1);
-	return (cleaned);
+	return (free(stash), stash = NULL, cleaned);
 }
 
 char	*fill(char *stash, char *line)
@@ -41,13 +39,13 @@ char	*fill(char *stash, char *line)
 	int	i;
 
 	i = 0;
-	if (!stash || stash[0] == '\0')
+	if (!stash[i])
 		return (NULL);
-	while (stash[i] != '\0' && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\n')
 		i++;
-	line = malloc(sizeof(char) * i + 1);
+	line = malloc(sizeof(char) * (i + 1));
 	if (!(line))
 		return (NULL);
 	ft_strlcpy(line, stash, i + 1);
@@ -59,17 +57,23 @@ char	*read_n_join(char *stash, int fd)
 	int		readed;
 	char	buf[BUFFER_SIZE + 1];
 
+	if (!(stash))
+	{
+		stash = malloc(sizeof(char));
+		if (!stash)
+			return (NULL);
+		stash[0] = '\0';
+	}
 	readed = 1;
 	while (readed)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
 		if (readed < 0)
-		{
-			buf[0] = '\0';
 			return (NULL);
-		}
 		buf[readed] = '\0';
-		stash = ft_strjoin(stash, buf);
+		stash = add_to_stash(stash, buf);
+		if (!stash)
+			return (NULL);
 		if (ft_strchr(stash, '\n'))
 			break ;
 	}
@@ -81,32 +85,34 @@ char	*get_next_line(int fd)
 	static char	*stash = NULL;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > OPEN_MAX)
+		return (free(stash), stash = NULL, NULL);
 	line = NULL;
 	stash = read_n_join(stash, fd);
-	// printf("\nrnj = '%s'", stash);
+	if (!stash)
+		return (stash = NULL, NULL);
 	line = fill(stash, line);
-	// printf("\nfill = '%s'", line);
+	if (!line)
+		return (free(stash), stash = NULL, NULL);
 	stash = clean(stash);
-	// printf("\ncleaned = '%s'", stash);
 	return (line);
 }
 
-#include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
+// #include "get_next_line.h"
+// #include <stdio.h>
+// #include <fcntl.h>
 
-int main(void)
-{
-	int fd = open("test.txt", O_RDONLY);
-	char *str;
+// int main(void)
+// {
+// 	int fd = open("bible_geneve_nouveau_testament_1669.txt", O_RDONLY);
+// 	char *str;
 
-	str = get_next_line(fd);
-	while (str)
-	{
-		printf("%s", str);
-		free(str);
-		str = get_next_line(fd);
-	}
-}
+// 	str = get_next_line(fd);
+// 	while (str)
+// 	{
+// 		printf("%s", str);
+// 		free(str);
+// 		str = get_next_line(fd);
+// 	}
+// }
+
