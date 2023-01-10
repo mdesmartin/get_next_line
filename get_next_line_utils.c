@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:26:14 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 15:28:15 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 17:13:26 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,24 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ft_strlcpy(str, s1, l_s1 + 1);
 	ft_strlcpy(str + l_s1, s2, l_s2 + 1);
+	// free(s1);
+	// s1 = NULL;
 	return (str);
 }
 
-char	*ft_strchr(const char *s, int c)
-{
-	int	a;
+// char	*ft_strchr(const char *s, int c)
+// {
+// 	int	a;
 
-	a = 0;
-	while (a <= ft_strlen(s))
-	{
-		if (s[a] == (char)c)
-			return (((char *) s) + a);
-		a++;
-	}
-	return (0);
-}
+// 	a = 0;
+// 	while (a <= ft_strlen(s))
+// 	{
+// 		if (s[a] == (char)c)
+// 			return (((char *) s) + a);
+// 		a++;
+// 	}
+// 	return (0);
+// }
 
 char	*add_to_stash(char *stash, char *buffer)
 {
@@ -77,3 +79,18 @@ char	*add_to_stash(char *stash, char *buffer)
 
 	return (dst);
 }
+
+char	*ft_strrchr(const char *s, int c)
+{
+	int	a;
+
+	a = ft_strlen(s);
+	while (a >= 0)
+	{
+		if (s[a] == (char)c)
+			return ((char *)s + a);
+		a--;
+	}
+	return (NULL);
+}
+

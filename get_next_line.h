@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:17:49 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 15:25:58 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 17:13:32 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 # include <unistd.h>
 # include <limits.h>
 
-char		*get_next_line(int fd);
-char		*read_n_join(char *stash, int fd);
-char		*fill(char *stash, char *line);
-char		*clean(char *stash);
-char		*ft_strjoin(char *s1, char *s2);
-char		*ft_strchr(const char *s, int c);
-void		ft_strlcpy(char *dst, const char *src, int dstsize);
+char	*get_next_line(int fd);
+char	*read_n_join(char *stash, int fd);
+char	*fill(char *stash, char *line);
+char	*clean(char *stash);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strrchr(const char *s, int c);
+void	ft_strlcpy(char *dst, const char *src, int dstsize);
 int		ft_strlen(const char *s);
-char 	*add_to_stash(char *stash, char *buffer);
+char	*add_to_stash(char *stash, char *buffer);
 
 #endif

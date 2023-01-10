@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:17:19 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 15:20:07 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 17:13:28 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*read_n_join(char *stash, int fd)
 		stash = add_to_stash(stash, buf);
 		if (!stash)
 			return (NULL);
-		if (ft_strchr(stash, '\n'))
+		if (ft_strrchr(stash, '\n'))
 			break ;
 	}
 	return (stash);
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 
 // int main(void)
 // {
-// 	int fd = open("bible_geneve_nouveau_testament_1669.txt", O_RDONLY);
+// 	int fd = open("test.txt", O_RDONLY);
 // 	char *str;
 
 // 	str = get_next_line(fd);
@@ -115,4 +115,3 @@ char	*get_next_line(int fd)
 // 		str = get_next_line(fd);
 // 	}
 // }
-
