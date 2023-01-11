@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:00:44 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 18:24:38 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/11 17:57:47 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (free(stash), stash = NULL, NULL);
+		return (free(stash[fd]), stash[fd] = NULL, NULL);
 	line = NULL;
-	stash = read_n_join(stash, fd);
-	if (!stash)
-		return (stash = NULL, NULL);
-	line = fill(stash, line);
+	stash[fd] = read_n_join(stash[fd], fd);
+	if (!stash[fd])
+		return (stash[fd] = NULL, NULL);
+	line = fill(stash[fd], line);
 	if (!line)
-		return (free(stash), stash = NULL, NULL);
-	stash = clean(stash);
+		return (free(stash[fd]), stash[fd] = NULL, NULL);
+	stash[fd] = clean(stash[fd]);
 	return (line);
 }
