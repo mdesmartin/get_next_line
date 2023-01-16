@@ -6,11 +6,11 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:01:17 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 18:22:57 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/16 16:14:28 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlen(const char *s)
 {

@@ -6,11 +6,11 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:00:44 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/11 17:57:47 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/01/16 16:14:11 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*clean(char *stash)
 {
