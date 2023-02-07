@@ -6,7 +6,7 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:26:14 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 18:22:47 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 13:59:42 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_strlcpy(char *dst, const char *src, int dstsize)
 		return ;
 	while (src[i] && i < dstsize - 1)
 	{
-			dst[i] = src[i];
-			i++;
+		dst[i] = src[i];
+		i++;
 	}
 	dst[i] = '\0';
 }

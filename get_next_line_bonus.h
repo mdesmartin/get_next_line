@@ -6,21 +6,20 @@
 /*   By: mvogel <mvogel@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:02:22 by mvogel            #+#    #+#             */
-/*   Updated: 2023/01/10 18:02:40 by mvogel           ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 14:01:13 by mvogel           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
-
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
 char	*get_next_line(int fd);
 char	*read_n_join(char *stash, int fd);
