@@ -11,6 +11,6 @@ The main objective of get_next_line is to read a file descriptor and return the 
 - Buffer management: get_next_line manages an internal buffer to efficiently read and process the file contents without unnecessary overhead.
 - Compatibility: The function is designed to work with multiple file descriptors simultaneously, allowing for concurrent file processing.
 
-By working on get_next_line, you will gain practical experience in file I/O operations, memory management, and string manipulation. It provides a useful utility function that can be integrated into larger projects requiring line-by-line file processing.
+*By working on get_next_line, you will gain practical experience in file I/O operations, memory management, and string manipulation. It provides a useful utility function that can be integrated into larger projects requiring line-by-line file processing.*
 
 **Note:** This function was developed as part of the 42 school curriculum and should be considered a learning exercise rather than a comprehensive file I/O library.
